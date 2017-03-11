@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import './Card.css';
 
 let Card = ({ label }) => {
   return (
-    <div>
+    <div className="card">
       {label}
     </div>
   )
