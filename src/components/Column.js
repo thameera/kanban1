@@ -1,10 +1,17 @@
 import React from 'react';
+import Card from '../containers/Card';
 import './Column.css';
 
-const Column = ({ id, label, cards }) => (
+const renderCards = (cards) => {
+  console.log(cards);
+  return cards.map(card => <Card key={card.id} label={card.label} />)
+}
+
+const Column = ({ label, cards }) => (
   <div className="column">
-    <div>{label}</div>
+    <div className="label">{label}</div>
     <div className="cards">
+      {renderCards(cards)}
     </div>
   </div>
 );
