@@ -1,0 +1,10 @@
+.column {
+  display: inline-block;
+  width: 200px;
+  min-height: 100px;
+  background-color: #bbb;
+  margin: 5px;
+}
+
+.cards {
+}
