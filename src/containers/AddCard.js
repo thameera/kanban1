@@ -3,6 +3,12 @@ import { connect } from 'react-redux';
 import { addCard } from '../actions';
 
 class AddCard extends Component {
+  componentDidMount() {
+    setInterval(() => {
+      this.refs.label.focus();
+    },100)
+  }
+
   onSubmit(e) {
     e.preventDefault();
     const { dispatch } = this.props;
