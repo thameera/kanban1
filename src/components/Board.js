@@ -1,5 +1,7 @@
 import React from 'react';
 import Column from './Column';
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 
 const getCardsForColumn = (cards, id) => {
   return cards.filter(card => id === card.column);
@@ -13,4 +15,4 @@ const Board = ({ cards }) => (
   </div>
 );
 
-export default Board;
+export default DragDropContext(HTML5Backend)(Board);

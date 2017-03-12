@@ -2,7 +2,21 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { moveLeft, moveRight, deleteCard } from '../actions';
 import { ContextMenu, MenuItem, ContextMenuTrigger } from 'react-contextmenu';
+import { DragSource } from 'react-dnd';
 import './Card.css';
+
+const cardSource = {
+  beginDrag(props) {
+    return {id: props.id};
+  }
+};
+
+const collect = (connect, monitor) => {
+  return {
+    connectDragSource: connect.dragSource(),
+    isDragging: monitor.isDragging()
+  }
+};
 
 class Card extends Component {
   handleClick(e, data) {
@@ -13,7 +27,8 @@ class Card extends Component {
 
   render() {
     const { id, label, moveLeft, moveRight } = this.props;
-    return (
+    const { connectDragSource } = this.props;
+    return connectDragSource(
       <div className="card">
         <ContextMenuTrigger id={"context-menu-card-"+id}>
           <div>
@@ -49,4 +64,4 @@ Card = connect(
   mapDispatchToProps
 )(Card);
 
-export default Card;
+export default DragSource('CARD', cardSource, collect)(Card);
