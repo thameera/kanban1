@@ -7,11 +7,11 @@ const getCardsForColumn = (cards, id) => {
   return cards.filter(card => id === card.column);
 }
 
-const Board = ({ cards }) => (
+const Board = ({ cards, moveCard }) => (
   <div>
-    <Column id={0} label="Inbox" cards={getCardsForColumn(cards, 0)} />
-    <Column id={1} label="In Progress" cards={getCardsForColumn(cards, 1)} />
-    <Column id={2} label="Done" cards={getCardsForColumn(cards, 2)} />
+    <Column id={0} label="Inbox" moveCard={moveCard} cards={getCardsForColumn(cards, 0)} />
+    <Column id={1} label="In Progress" moveCard={moveCard} cards={getCardsForColumn(cards, 1)} />
+    <Column id={2} label="Done" moveCard={moveCard} cards={getCardsForColumn(cards, 2)} />
   </div>
 );
 

@@ -17,3 +17,9 @@ export const deleteCard = (id) => ({
   type: 'DELETE_CARD',
   id
 });
+
+export const moveCard = (colId, cardId) => ({
+  type: 'MOVE_CARD',
+  colId,
+  cardId
+});
