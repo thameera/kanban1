@@ -22,6 +22,9 @@ const card = (state, action) => {
         ...state,
         column: state.column + 1
       };
+    case 'DELETE_CARD':
+      if (state.id === action.id) return false;
+      return true;
     default:
       return state;
   }
@@ -37,6 +40,8 @@ const cards = (state = [], action) => {
     case 'MOVE_LEFT':
     case 'MOVE_RIGHT':
       return state.map(c => card(c, action));
+    case 'DELETE_CARD':
+      return state.filter(c => card(c, action));
     default:
       return state;
   }

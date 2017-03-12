@@ -12,3 +12,8 @@ export const moveRight = (id) => ({
   type: 'MOVE_RIGHT',
   id
 });
+
+export const deleteCard = (id) => ({
+  type: 'DELETE_CARD',
+  id
+});

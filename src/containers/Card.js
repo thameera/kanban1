@@ -1,12 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { moveLeft, moveRight } from '../actions';
+import { moveLeft, moveRight, deleteCard } from '../actions';
 import { ContextMenu, MenuItem, ContextMenuTrigger } from 'react-contextmenu';
 import './Card.css';
 
-let Card = ({ id, label, moveLeft, moveRight }) => {
+let Card = ({ id, label, moveLeft, moveRight, deleteCard }) => {
   const handleClick = (e, data) => {
-    console.log(`${data} - ${label}`);
+    if (data.action === 'Delete') {
+      deleteCard(id);
+    }
   }
 
   return (
@@ -35,7 +37,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   moveLeft,
-  moveRight
+  moveRight,
+  deleteCard
 };
 
 Card = connect(
