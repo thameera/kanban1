@@ -14,11 +14,16 @@ const cardSource = {
 const collect = (connect, monitor) => {
   return {
     connectDragSource: connect.dragSource(),
+    connectDragPreview: connect.dragPreview(),
     isDragging: monitor.isDragging()
   }
 };
 
 class Card extends Component {
+  componentDidMount() {
+    this.props.connectDragPreview(this.refs.innerCard);
+  }
+
   handleClick(e, data) {
     if (data.action === 'Delete') {
       this.props.deleteCard(this.props.id);
@@ -31,12 +36,14 @@ class Card extends Component {
     return connectDragSource(
       <div className="card">
         <ContextMenuTrigger id={"context-menu-card-"+id}>
-          <div>
-            {label}
-          </div>
-          <div>
-            <button onClick={() => moveLeft(id)}>&lt;</button>
-            <button onClick={() => moveRight(id)}>&gt;</button>
+          <div ref="innerCard">
+            <div>
+              {label}
+            </div>
+            <div>
+              <button onClick={() => moveLeft(id)}>&lt;</button>
+              <button onClick={() => moveRight(id)}>&gt;</button>
+            </div>
           </div>
         </ContextMenuTrigger>
 
