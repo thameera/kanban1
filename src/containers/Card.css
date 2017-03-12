@@ -3,9 +3,21 @@
   margin-left: 5px;
   margin-bottom: 2px;
   padding: 2px;
-  width: 190px;
+  width: 185px;
   text-align: left;
   border-radius: 3px;
+  box-shadow: 5px 5px 5px -4px rgba(0,0,0,0.75);
+}
+
+#innerCard {
+  min-height: 60px;
+  position: relative;
+}
+
+.buttons {
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
 
 .react-contextmenu {

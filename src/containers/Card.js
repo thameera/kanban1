@@ -36,11 +36,11 @@ class Card extends Component {
     return connectDragSource(
       <div className="card">
         <ContextMenuTrigger id={"context-menu-card-"+id}>
-          <div ref="innerCard">
+          <div ref="innerCard" id="innerCard">
             <div>
               {label}
             </div>
-            <div>
+            <div className="buttons">
               <button onClick={() => moveLeft(id)}>&lt;</button>
               <button onClick={() => moveRight(id)}>&gt;</button>
             </div>
