@@ -3,7 +3,6 @@ import Card from '../containers/Card';
 import './Column.css';
 
 const renderCards = (cards) => {
-  console.log(cards);
   return cards.map(card => <Card key={card.id} id={card.id} label={card.label} />)
 }
 
