@@ -1,29 +1,33 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addCard } from '../actions';
 
-let AddCard = ({ dispatch }) => {
-  let input
+class AddCard extends Component {
+  onSubmit(e) {
+    e.preventDefault();
+    const { dispatch } = this.props;
+    const input = this.refs.label.value.trim();
+    if (!input) {
+      return;
+    }
+    dispatch(addCard(input));
+    this.refs.label.value = '';
+  }
 
-  return (
-    <div>
-      <form onSubmit={e => {
-        e.preventDefault();
-        input.value = input.value.trim();
-        if (!input.value) {
-          return;
-        }
-        dispatch(addCard(input.value));
-        input.value = '';
-      }}>
-        <input ref={node => { input = node }} />
-        <button type="submit">
-          Add
-        </button>
-      </form>
-    </div>
-  );
+  render() {
+    return (
+      <div>
+        <form onSubmit={this.onSubmit.bind(this)}>
+          <input autoFocus ref="label" />
+          <button type="submit">
+            Add
+          </button>
+        </form>
+      </div>
+    );
+  }
 }
+
 AddCard = connect()(AddCard);
 
 export default AddCard;
